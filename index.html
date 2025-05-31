@@ -1,58 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifório</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio - Keven Vidal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
 </head>
-<body class=body>
-    
-    <header align="center" >
-        <h1 class=link>Olá Mundo</h1>
-    </header 
-    <section >
-        <p align="center" class=link>olá, me chamo Keven Rafael da Costa Vidal e sou desenvolvedor junior atualmente. Iniciei minha jornada na area <br>
-           pelo curso tecnico de desenvolvimento de sistemas pela ETEC professor Armando José Farinazzo,onde eu <br>
-           adiquiri conhecimentos e habilidades relacionadas na area de programação e desenvolvimento e outras areas ligada a tecnologia.</p>
-  
-        <p align="center" class=link>atualmente eu estou cursando o curso de bacharelado em sistemas de informação pelo instituto publico federal de educação, <br>
-        cienca e tecnologia(IFSP),em Votuporanga-SP, onde estou constantemente aprimorando meus conhecimentos e em constante evoluçao <br>
-        e venho aplicando meus conhecimentos em projetos,procurando conhecimento tambem em cursos e treinamentos para me tornar cada dia <br>
-        mais um profissional qualificado.</p>
+<script>
+  const element = document.getElementById("typewriter");
+  const texts = ["Olá, Mundo!", "Sou Desenvolvedor", "Seja bem-vindo ao meu portfólio"];
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-        <p align="center" class=link>procuro ampliar meu conhecimento atravez de comunidades que eu participo como a coding ferpa,uma comunidade de programadores de <br>
-           fernandopolis e a he4rt Developers que é considerada uma das maiores comunidades de programadores do brasil que tem como intuito democratizar <br>
-           o conhecimento e acesso a materias de qualidade.</p>
+  function typeLoop() {
+    const currentText = texts[textIndex];
+    const speed = isDeleting ? 50 : 100;
 
-    </section>
-    <section align="center">
-        <h1 class=link>Habilidades</h1>
-        <p class=link>aqui estão algumas skill que eu tive contato pelo meio academico e continuo aprimorando </p>
-        <img src="image/css-3.png" alt="css" height="60" width="60">
-        <img src="image/html-5.png" alt="html" height="60" width="60">
-        <img src="image/java.png" alt="java" height="60" width="60">
-        <img src="image/mysql.png" alt="MySql" height="60" width="60">
-        <img src="image/c-.png" alt="c++" height="60" width="60">
-        <img src="image/boot_spring_logo_icon_214693.png" alt="spring" height="60" width="60">
-        </section>
-        <footer>
-            <div align="center">
-                <h4 class=link>ONDE ME ENCONTRAR</h4>
-                 <br>
-                <a href="https://www.linkedin.com/in/keven-rafael/" target="_blank" rel="noopener noreferrer">
-                 <i class="fab fa-linkedin fa-2x"></i>
-                </a>
+    element.textContent = currentText.slice(0, charIndex);
 
-                <a href="https://github.com/KevenRafael1" target="_blank" rel="noopener noreferrer">
-                 <i class="fab fa-github fa-2x"></i>
-                </a>
+    if (!isDeleting) {
+      charIndex++;
+      if (charIndex > currentText.length) {
+        isDeleting = true;
+        setTimeout(typeLoop, 1500); // pausa antes de apagar
+        return;
+      }
+    } else {
+      charIndex--;
+      if (charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+      }
+    }
 
-            </div>
-        </footer>    
+    setTimeout(typeLoop, speed);
+  }
+
+  typeLoop();
+</script>
+
+
+
+<body>
+
+  <header align="center">
+    <h1  id="typewriter" class="typing">Olá Mundo</h1>
+  </header>
+
+  <section class="container">
+  <h2>Sobre Mim</h2>
+
+  <p class="link">
+    Olá! Me chamo <strong>Keven Rafael da Costa Vidal</strong> e sou um desenvolvedor júnior apaixonado por tecnologia e inovação. Minha jornada no desenvolvimento de software começou durante o curso técnico em Desenvolvimento de Sistemas pela <strong>ETEC Prof. Armando José Farinazzo</strong>, onde tive o primeiro contato com programação, lógica computacional, banco de dados e metodologias de desenvolvimento.
+  </p>
+
+  <p class="link">
+    Atualmente estou cursando <strong>Bacharelado em Sistemas de Informação</strong> pelo <strong>Instituto Federal de Educação, Ciência e Tecnologia de São Paulo (IFSP)</strong> - câmpus Votuporanga. Lá, venho aprimorando constantemente meus conhecimentos, com foco em desenvolvimento backend, banco de dados, estruturas de dados e boas práticas de código.
+  </p>
+
+  <p class="link">
+    Além do ambiente acadêmico, busco crescimento contínuo por meio de cursos livres, projetos pessoais e participação ativa em comunidades de tecnologia. Faço parte da <strong>Coding Ferpa</strong>, comunidade de desenvolvedores da região de Fernandópolis-SP, e também da <strong>He4rt Developers</strong>, uma das maiores comunidades tech do Brasil, cujo objetivo é democratizar o acesso a conteúdos de qualidade e gratuitos.
+  </p>
+
+  <p class="link">
+    Meu objetivo é evoluir como desenvolvedor full stack, contribuindo para projetos que gerem impacto e valor, enquanto continuo aprendendo e compartilhando conhecimento com a comunidade.
+  </p>
+</section>
+
+
+  <section align="center">
+    <h1 class="link">Habilidades</h1>
+    <p class="link">Aqui estão algumas tecnologias com as quais já trabalhei e continuo aprimorando:</p>
+
+    <div class="skills-container">
+      <img src="image/html-5.png" alt="HTML5" class="tech-icon" />
+      <img src="image/css-3.png" alt="CSS3" class="tech-icon" />
+      <img src="image/java.png" alt="Java" class="tech-icon" />
+      <img src="image/mysql.png" alt="MySQL" class="tech-icon" />
+      <img src="image/c-.png" alt="C++" class="tech-icon" />
+      <img src="image/boot_spring_logo_icon_214693.png" alt="Spring Boot" class="tech-icon" />
+    </div>
+  </section>
+
+  <footer>
+    <h4 class="link">ONDE ME ENCONTRAR</h4>
+    <a href="https://www.linkedin.com/in/keven-rafael/" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-linkedin fa-2x"></i>
+    </a>
+    <a href="https://github.com/KevenRafael1" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-github fa-2x"></i>
+    </a>
+  </footer>
+
 </body>
 </html>

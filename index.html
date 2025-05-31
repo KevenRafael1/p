@@ -10,46 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
 </head>
-<script>
-  const element = document.getElementById("typewriter");
-  const texts = ["Olá, Mundo!", "Sou Desenvolvedor", "Seja bem-vindo ao meu portfólio"];
-  let textIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-
-  function typeLoop() {
-    const currentText = texts[textIndex];
-    const speed = isDeleting ? 50 : 100;
-
-    element.textContent = currentText.slice(0, charIndex);
-
-    if (!isDeleting) {
-      charIndex++;
-      if (charIndex > currentText.length) {
-        isDeleting = true;
-        setTimeout(typeLoop, 1500); // pausa antes de apagar
-        return;
-      }
-    } else {
-      charIndex--;
-      if (charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-      }
-    }
-
-    setTimeout(typeLoop, speed);
-  }
-
-  typeLoop();
-</script>
-
-
-
 <body>
 
   <header align="center">
-    <h1  id="typewriter" class="typing">Olá Mundo</h1>
+    <h1  id="typewriter" class="typing">Hello Word!</h1>
   </header>
 
   <section class="container">
@@ -96,6 +60,49 @@
       <i class="fab fa-github fa-2x"></i>
     </a>
   </footer>
+  <script>
+ const element = document.getElementById("typewriter");
+const texts = ["Hello Word!", "Sou o Keven"];
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+const typingSpeed = 300;
+const deletingSpeed = 75;
+const pauseAfterTyping = 5500;
+const pauseAfterDeleting = 500;
+
+function typeLoop() {
+  const currentText = texts[textIndex];
+
+  if (!isDeleting) {
+    element.textContent = currentText.substring(0, charIndex + 1);
+    charIndex++;
+
+    if (charIndex === currentText.length) {
+      isDeleting = true;
+      setTimeout(typeLoop, pauseAfterTyping);
+    } else {
+      setTimeout(typeLoop, typingSpeed);
+    }
+  } else {
+    element.textContent = currentText.substring(0, charIndex - 1);
+    charIndex--;
+
+    if (charIndex === 0) {
+      isDeleting = false;
+      textIndex = (textIndex + 1) % texts.length;
+      setTimeout(typeLoop, pauseAfterDeleting);
+    } else {
+      setTimeout(typeLoop, deletingSpeed);
+    }
+  }
+}
+
+typeLoop();
+
+
+</script>
 
 </body>
 </html>
